@@ -19,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .build()
-
-        val service: TodoService = retrofit.create(TodoService::class.java)
-        val todos: Call<List<Todo>> = service.getALLTodos()
+//
+//        val retrofit = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl("https://jsonplaceholder.typicode.com/")
+//            .build()
+        val todos: Call<List<Todo>> = RetrofitProvider.service.getALLTodos()
+//        val service: TodoService = retrofit.create(TodoService::class.java)
+//        val todos: Call<List<Todo>> = service.getALLTodos()
 
         todos.enqueue(object : Callback<List<Todo>> {
             override fun onResponse(call: Call<List<Todo>>, response: Response<List<Todo>>) {
