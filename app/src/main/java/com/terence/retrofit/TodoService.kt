@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface TodoService {
     @GET("todos")
-    fun getALLTodos(): Call<List<Todo>>
+    suspend fun getALLTodos(): List<Todo>
 }
